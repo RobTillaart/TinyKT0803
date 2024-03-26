@@ -13,8 +13,8 @@ TinyKT0803 FM_SEND;
 
 void setup()
 {
-  Serial.begin(115200);
-  while(!Serial);
+  //  Serial.begin(115200);
+  //  while(!Serial);
 
   TinyWireM.begin();
   
@@ -22,10 +22,10 @@ void setup()
   FM_SEND.setFrequency(105.75);
   FM_SEND.setMute(false);
 
-  Serial.print("Freq: ");
-  Serial.println(FM_SEND.getFrequency());
-  Serial.print("Channel: ");
-  Serial.println(FM_SEND.getChannel());
+  //  Serial.print("Freq: ");
+  //  Serial.println(FM_SEND.getFrequency());
+  //  Serial.print("Channel: ");
+  //  Serial.println(FM_SEND.getChannel());
 }
 
 void loop()
