@@ -31,7 +31,7 @@ The library is verified to work - See issue #2
 There are two points of attention:
 
 - ATTiny85 needs a 500 ms delay to initialize I2C to communicate properly (assuming 1 MHz clock)
-- ATTiny85 needs a decoupling capacitor between RESET and GND and a 10K resistor between VDC and RESET
+- ATTiny85 needs a decoupling capacitor 100-300 nF between RESET and GND and a 10K resistor between VDC and RESET
 
 Note: The KT0803 library will be leading in development and this one will follow.
 The interface section below is identical except for the constructor.
