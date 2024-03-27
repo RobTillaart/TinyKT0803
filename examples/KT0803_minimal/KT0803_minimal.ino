@@ -18,7 +18,7 @@ void setup()
   //  while(!Serial);
 
   TinyWireM.begin();
-  //  give I2C time to initialize (hard coded here)
+  //  give I2C time to initialize
   delay(500);
 
   FM_SEND.begin();

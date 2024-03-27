@@ -58,14 +58,17 @@ bool TinyKT0803::setChannel(uint16_t channel)
 {
   if ((channel < 1400) || (channel > 2160)) return false;
   //  need to split over 3 registers
-  //  register 2 part skipped (always 0) for TinyKT0803
+  //  register 2 part skipped (always 0) for KT0803
   uint16_t ch = channel >> 1;
-  //  register 0
-  if (writeData(0x00, ch & 0xFF) == false) return false;
-  //  register 1
-  uint8_t data = readData(0x01) & 0xF8;  //  keep other bits
-  data |= ((ch >> 8) & 0x07);
-  return writeData(0x01, data);
+
+  uint8_t register0 = ch & 0xFF;  //  CHSEL[8:1]
+  if (writeData(0x00, register0) == false) return false;
+
+  ch >>= 8;
+  uint8_t register1 = readData(0x01);
+  register1 &= 0xF8;         //  CHSEL[11:9]
+  register1 |= (ch & 0x07);  //  CHSEL[11:9]
+  return writeData(0x01, register1);
 }
 
 
@@ -209,6 +212,7 @@ int TinyKT0803::readData(uint8_t reg)
   TinyWireM.write(reg);
   TinyWireM.endTransmission();
 
+  //  Behavior differs from TwoWire class
   int rv = TinyWireM.requestFrom(_address, (uint8_t) 1);
   if (rv == 0)
   {
@@ -233,19 +237,20 @@ bool TinyKT0803K::setChannel(uint16_t channel)
   if ((channel < 1400) || (channel > 2160)) return false;
   //  need to split over 3 registers
   uint16_t ch = channel;
-  //  register 2
-  uint8_t data = readData(0x02) & 0x7F;
-  data |= (channel & 0x01) << 8;
-  if (writeData(0x02, data) == false) return false;
+
+  uint8_t register2 = readData(0x02) & 0x7F;
+  register2 |= (channel & 0x01) << 7;   //  CHSEL[0]
+  if (writeData(0x02, register2) == false) return false;
   ch >>= 1;
-  //  register 0
-  if (writeData(0x00, ch & 0xFF) == false) return false;
-  //  register 1
+
+  uint8_t register0 = ch & 0xFF;  //  CHSEL[8:1]
+  if (writeData(0x00, register0) == false) return false;
+
   ch >>= 8;
-  data = readData(0x01);
-  data &= 0xF8;   //  keep other bits
-  data |= ch & 0x07;
-  return writeData(0x01, data);
+  uint8_t register1 = readData(0x01);
+  register1 &= 0xF8;         //  CHSEL[11:9]
+  register1 |= (ch & 0x07);  //  CHSEL[11:9]
+  return writeData(0x01, register1);
 }
 
 uint16_t TinyKT0803K::getChannel()
@@ -254,7 +259,7 @@ uint16_t TinyKT0803K::getChannel()
   channel <<= 8;
   channel |= readData(0x00);
   channel <<= 1;
-  channel |= (readData(0x02) >> 0x07);
+  channel |= (readData(0x02) >> 7);
   return channel;
 }
 
