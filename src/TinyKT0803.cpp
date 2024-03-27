@@ -209,12 +209,13 @@ int TinyKT0803::readData(uint8_t reg)
   TinyWireM.write(reg);
   TinyWireM.endTransmission();
 
-  if (TinyWireM.requestFrom(_address, (uint8_t) 1) == 1)
+  int rv = TinyWireM.requestFrom(_address, (uint8_t) 1);
+  if (rv == 0)
   {
     uint8_t data = TinyWireM.read();
     return data;
   }
-  return -1;
+  return rv;
 }
 
 
