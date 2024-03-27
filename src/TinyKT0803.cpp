@@ -4,6 +4,7 @@
 // VERSION: 0.1.0
 // PURPOSE: Arduino Library for KT0803 and KT0803K FM transmitter. Tiny edition.
 //     URL: https://github.com/RobTillaart/TinyKT0803
+//     URL: https://github.com/RobTillaart/KT0803
 
 
 #include "TinyKT0803.h"

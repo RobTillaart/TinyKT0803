@@ -20,14 +20,21 @@ Arduino Library for KT0803 and KT0803K FM transmitter. Tiny85 edition.
 In different countries there are different laws with respect to using transmitting devices 
 and their range. 
 Please inform yourself of the local rules and laws if and how you may or may not use a 
-device like the TinyKT0803 in your projects, either hobby, commercial or otherwise.
+device like the KT0803 in your projects, either hobby, commercial or otherwise.
 
 
 ## Description
 
 This is an **EXPERIMENTAL** port to the Tiny85/45/25 processor of - https://github.com/RobTillaart/KT0803
 
-That library will be leading, the interface section below is identical except for the constructor.
+The library is verified to work - See issue #2  
+There are two points of attention:
+
+- ATTiny85 needs a 500 ms delay to initialize I2C to communicate properly (assuming 1 MHz clock)
+- ATTiny85 needs a decoupling capacitor between RESET and GND and a 10K resistor between VDC and RESET
+
+Note: The KT0803 library will be leading in development and this one will follow.
+The interface section below is identical except for the constructor.
 
 
 ## Interface

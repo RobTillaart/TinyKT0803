@@ -17,9 +17,9 @@ void setup()
   //  Serial.begin(115200);
   //  while(!Serial);
 
-  delay(1000);
-
   TinyWireM.begin();
+  //  give I2C time to initialize (hard coded here)
+  delay(500);
 
   FM_SEND.begin();
   FM_SEND.setChannel(2000);  // * 0.05 = 100.00 MHz
