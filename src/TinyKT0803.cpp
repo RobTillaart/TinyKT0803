@@ -210,9 +210,10 @@ int TinyKT0803::readData(uint8_t reg)
 {
   TinyWireM.beginTransmission(_address);
   TinyWireM.write(reg);
-  TinyWireM.endTransmission();
+  TinyWireM.endTransmission(false);  //  explicit no STOP  fig 3 page 4
 
-  //  Behavior differs from TwoWire class
+  //  Behaviour differs from TwoWire class
+  //  returns 0 if OK, not the bytes available.
   int rv = TinyWireM.requestFrom(_address, (uint8_t) 1);
   if (rv == 0)
   {
