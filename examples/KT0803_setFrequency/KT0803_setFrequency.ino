@@ -13,11 +13,14 @@ TinyKT0803 FM_SEND;
 
 void setup()
 {
+  //  Tiny only supports SWSerial 
   //  Serial.begin(115200);
   //  while(!Serial);
 
+  delay(1000);
+
   TinyWireM.begin();
-  
+
   FM_SEND.begin();
   FM_SEND.setFrequency(105.75);
   FM_SEND.setMute(false);

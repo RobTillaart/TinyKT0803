@@ -12,7 +12,7 @@
 
 # TinyKT0803
 
-Arduino Library for KT0803 and KT0803K FM transmitter. Tiny edition.
+Arduino Library for KT0803 and KT0803K FM transmitter. Tiny85 edition.
 
 
 ### Legal point of attention
@@ -25,7 +25,7 @@ device like the TinyKT0803 in your projects, either hobby, commercial or otherwi
 
 ## Description
 
-This is an **EXPERIMENTAL** port to the tiny processor of - https://github.com/RobTillaart/KT0803
+This is an **EXPERIMENTAL** port to the Tiny85/45/25 processor of - https://github.com/RobTillaart/KT0803
 
 That library will be leading, the interface section below is identical except for the constructor.
 

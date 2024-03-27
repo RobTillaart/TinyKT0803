@@ -70,7 +70,7 @@ protected:
 
   bool writeData(uint8_t reg, uint8_t data);
   int readData(uint8_t reg);
- 
+
   uint8_t _address = 0x3E;  //  fixed address for KT0803.
 };
 

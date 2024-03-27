@@ -12,7 +12,7 @@
 //  REGISTERS on page 7 datasheet
 
 
-TinyKT0803::TinyKT0803()  
+TinyKT0803::TinyKT0803()
 {
   _address  = 0x3E;
 }
@@ -41,7 +41,7 @@ bool TinyKT0803::setFrequency(float MHz)
 {
   if ((MHz < 70) || (MHz > 108)) return false;
   //  steps 50 KHz
-  return setChannel(round(MHz * 20));  
+  return setChannel(round(MHz * 20));
 }
 
 
@@ -73,6 +73,7 @@ uint16_t TinyKT0803::getChannel()
   uint16_t channel = readData(0x01) & 0x07;
   channel <<= 8;
   channel |= readData(0x00);
+  channel <<= 1;
   return channel;
 }
 
@@ -105,11 +106,11 @@ bool TinyKT0803::setRFGain(uint8_t rfgain)
   data |= (rfgain & 0x03) << 6;
   writeData(0x01, data);
   // bit 2
-  data = readData(0x13) & 0x7F; 
+  data = readData(0x13) & 0x7F;
   data |= (rfgain & 0x04) << 5;
   writeData(0x13, data);
   // bit 3
-  data = readData(0x02) & 0xBF; 
+  data = readData(0x02) & 0xBF;
   data |= (rfgain & 0x08) << 3;
   writeData(0x02, data);
   return true;
