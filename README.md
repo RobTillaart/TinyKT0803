@@ -189,6 +189,27 @@ The KT0803M looks almost identical to the TinyKT0803K (no new registers), so
 a derived class is straightforward.
 
 
+## Interface KT0803K
+
+(not tested), check datasheet.
+
+#### Mono Stereo
+
+- **bool setMono()** idem
+- **bool setStereo()** idem
+- **bool isStereo()** idem
+
+#### Bass
+
+- **bool setBass(uint8_t bass);  //  0..3 = 0, 5, 11, 17 dB
+- **uint8_t getBass()** idem
+
+#### Misc
+
+- **bool powerOK()**
+- **bool silenceDetected()**
+
+
 ## Future
 
 See - https://github.com/RobTillaart/KT0803

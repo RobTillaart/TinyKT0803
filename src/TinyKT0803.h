@@ -87,6 +87,17 @@ public:
   //  CHANNEL
   bool     setChannel(uint16_t channel);
   uint16_t getChannel();
+
+  //  KT0803K SPECIFIC
+  bool     setMono();
+  bool     setStereo();
+  bool     isStereo();
+
+  bool     setBass(uint8_t bass);  //  0..3 = 0, 5, 11, 17 dB
+  uint8_t  getBass();
+
+  bool     powerOK();
+  bool     silenceDetected();
 };
 
 
