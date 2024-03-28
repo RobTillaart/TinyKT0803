@@ -41,7 +41,7 @@ bool TinyKT0803::isConnected()
 bool TinyKT0803::setFrequency(float MHz)
 {
   if ((MHz < 70) || (MHz > 108)) return false;
-  //  steps 50 KHz
+  //  steps 50 KHz although KT0803 will truncate to 100 KHz.
   return setChannel(round(MHz * 20));
 }
 

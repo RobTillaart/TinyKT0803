@@ -179,13 +179,13 @@ A minimal hardcoded preset sketch is in the examples.
 
 ## Derived classes
 
-Since 0.2.0 the TinyKT0803K class is created, although minimally implemented.
+A derived class TinyKT0803K class is created, with some extended
+functions.
 
-The TinyKT0803L might work as it seems backwards compatible. It has far more
-registers in use than the KT0803/K.
-At the moment there is no intention to implement this KT0803L version.
+The KT0803L will work as it is backwards compatible with KT0803K. 
+It has far more registers in use than the KT0803/K.
 
-The KT0803M looks almost identical to the TinyKT0803K (no new registers), so
+The KT0803M is identical to the KT0803K (no new registers), so
 a derived class is straightforward.
 
 
@@ -206,8 +206,8 @@ a derived class is straightforward.
 
 #### Misc
 
-- **bool powerOK()**
-- **bool silenceDetected()**
+- **bool powerOK()** idem
+- **bool silenceDetected()** idem
 
 
 ## Future
